@@ -3,6 +3,7 @@
 let seceretScore = Math.trunc(Math.random() * 20 + 1);
 
 let score = 10;
+let highscore = 0;
 
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
@@ -14,6 +15,11 @@ document.querySelector('.check').addEventListener('click', function () {
     document.querySelector('.message').textContent = '💐 Correct Number';
     document.querySelector('body').style.backgroundColor = '#60b347';
     document.querySelector('.number').textContent = seceretScore;
+
+    if (score > highscore) {
+      highscore = score;
+      document.querySelector('.highscore').textContent = highscore;
+    }
   } else if (guess > seceretScore) {
     if (score > 1) {
       document.querySelector('.message').textContent = '📈 Too High';
