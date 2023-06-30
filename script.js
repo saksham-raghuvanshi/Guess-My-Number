@@ -1,7 +1,6 @@
 'use strict';
 
-const seceretScore = Math.trunc(Math.random() * 20 + 1);
-document.querySelector('.number').textContent = seceretScore;
+let seceretScore = Math.trunc(Math.random() * 20 + 1);
 
 let score = 10;
 
@@ -13,6 +12,8 @@ document.querySelector('.check').addEventListener('click', function () {
     document.querySelector('.message').textContent = '⛔ No number!';
   } else if (guess === seceretScore) {
     document.querySelector('.message').textContent = '💐 Correct Number';
+    document.querySelector('body').style.backgroundColor = '#60b347';
+    document.querySelector('.number').textContent = seceretScore;
   } else if (guess > seceretScore) {
     if (score > 1) {
       document.querySelector('.message').textContent = '📈 Too High';
@@ -32,4 +33,14 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.score').textContent = '0';
     }
   }
+});
+
+document.querySelector('.again').addEventListener('click', function () {
+  score = 10;
+  document.querySelector('.score').textContent = score;
+  document.querySelector('body').style.backgroundColor = '#222';
+  seceretScore = Math.trunc(Math.random() * 20 + 1);
+  document.querySelector('.message').textContent = 'Start guessing...';
+  document.querySelector('.guess').value = '';
+  document.querySelector('.number').textContent = '?';
 });
